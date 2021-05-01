@@ -9,7 +9,7 @@
 		<!-- repo link -->
 		<a v-if="repoLink" :href="repoLink" class="repo-link" target="_blank" rel="noopener noreferrer">
 			<!-- {{ repoLabel }} -->
-			<img class="repo-link-image" src="//img-cdn-qiniu.dcloud.net.cn/uniapp/doc/github.svg" alt="" />
+			<img class="repo-link-image" src="/github.svg" alt />
 			<!-- <OutboundLink /> -->
 		</a>
 	</nav>

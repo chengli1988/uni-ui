@@ -1,7 +1,18 @@
 <template>
 	<main class="page">
 		<slot name="top" />
-		<div class="wrap">
+			<div class="google-ad">
+				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6215120435081792" crossorigin="anonymous"></script>
+				<!-- content -->
+				<ins class="adsbygoogle"
+						style="display:inline-block;width:728px;height:90px"
+						data-ad-client="ca-pub-6215120435081792"
+						data-ad-slot="7394099008"></ins>
+				<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+			<div class="wrap">
 			<Content class="theme-default-content" />
 			<div ref="simulator" class="simulator-box">
 				<div class="simulator-top"><div class="simulator-top_box"></div></div>
@@ -61,6 +72,17 @@ export default {
 .page
 	padding-bottom 2rem
 	display block
+
+.google-ad
+	padding 5rem 2rem 1rem 2rem
+
+.theme-default-content:not(.custom)
+	padding 0 2rem
+
+.theme-default-content:not(.custom)	> h1:first-child
+	padding 0
+	margin-top 0rem
+
 .wrap
 	max-width 1400px
 	display flex
