@@ -86,7 +86,7 @@ function getAllComponentsList(modulesPath) {
 			let data = fs.readFileSync(packagePath).toString()
 			content.push(JSON.parse(data))
 		} catch (err) {
-			console.log(packagePath + '不存在');
+			// console.log(packagePath + '不存在');
 		}
 	})
 
@@ -234,7 +234,6 @@ function versionAll(md, oldVersion, mds = []) {
 }
 
 function buildDocsChangeLog(md, version) {
-	console.log('开始文档日志更新...');
 	let date = new Date()
 	date = `${date.getFullYear()}-${padZero(date.getMonth() + 1)}-${padZero(date.getDate())}`
 	md = md.replace(/\r\n/ig, '\n')
@@ -245,6 +244,7 @@ function buildDocsChangeLog(md, version) {
 		if (!v) return
 		const nameRE = /-\s+([a-z\-]+ (优化|新增|修复)?).*/g
 		const curNameMatch = nameRE.exec(v)
+		if (!curNameMatch) return
 		let curName = {
 			name: curNameMatch[1].replace(curNameMatch[2], '').trim(),
 			line: curNameMatch[0],
@@ -295,7 +295,6 @@ function compareVersion(a, b) {
 	a = a.split('.')
 	b = b.split('.')
 	if (a.length !== b.length) {
-		// console.error('版本号格式不正确')
 		return false
 	}
 	if (a[0] !== b[0]) {

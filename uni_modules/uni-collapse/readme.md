@@ -1,6 +1,7 @@
 
 
 ## Collapse 折叠面板
+> **组件名：uni-collapse**
 > 代码块： `uCollapse`
 > 关联组件：`uni-collapse-item`、`uni-icons`。
 
@@ -92,6 +93,7 @@
 |resize	|更新当前列表高度，只有 `animation:true` 下生效|
 
 
+> **提示**
 > - resize 方法解决动态添加数据，带动画的折叠面板高度不更新的问题
 > - 需要在数据渲染完毕之后使用 `resize` 方法。推荐在 `this.nextTick()` 中使用
 
@@ -105,3 +107,7 @@
 |disabled	|Boolean|false	|是否禁用		|
 |open		|Boolean|false	|是否展开面板	|
 |showAnimation	|Boolean	|false	|开启动画		|
+
+## 组件示例
+
+点击查看：[https://hellouniapp.dcloud.net.cn/pages/extUI/collapse/collapse](https://hellouniapp.dcloud.net.cn/pages/extUI/collapse/collapse)

@@ -1,11 +1,13 @@
 
 
 ## SwiperDot 轮播图指示点
+> **组件名：uni-swiper-dot**
 > 代码块： `uSwiperDot`
 
 
 自定义轮播图指示点
 
+> **注意事项**
 > 为了避免错误使用，给大家带来不好的开发体验，请在使用组件前仔细阅读下面的注意事项，可以帮你避免一些错误。
 > - 本组件依赖 `swiper` 组件,请与`swiper`组件配合使用
 > - `width` 与 `height` 如非必要，请勿设置过大，或者过小
@@ -82,3 +84,8 @@ export default {
 |selectedBackgroundColor|Color	| '#333'						|已选择指示点背景色，**在 mode = nav 时不生效**				|
 |selectedBorder			|Border	| '1px rgba(0, 0, 0, .9) solid'	|已选择指示点边框样式，**在 mode = nav 时不生效**			|
 
+
+
+## 组件示例
+
+点击查看：[https://hellouniapp.dcloud.net.cn/pages/extUI/swiper-dot/swiper-dot](https://hellouniapp.dcloud.net.cn/pages/extUI/swiper-dot/swiper-dot)

@@ -30,6 +30,7 @@ uni-app的内置组件已经有了 `<form>`组件，用于提交表单内容。
 - `focus` 属性在开发者工具从不生效，需要真机测试
 - `resetFields` 方法不会重置原生组件和三方组件的值
 - 如果配置 `validateTrigger` 属性为 `bind` 且表单域组件使用 `input` 事件触发会耗损部分性能，请谨慎使用
+- 组件支持 nvue ，需要在 `manifest.json > app-plus` 节点下配置 `"nvueStyleCompiler" : "uni-app"` 
 - 如使用过程中有任何问题，或者您对uni-ui有一些好的建议，欢迎加入 uni-ui 交流群：871950839
 :::
 
@@ -53,7 +54,7 @@ uni-app的内置组件已经有了 `<form>`组件，用于提交表单内容。
 ```html
 <template>
 	<view class="">
-		<uni-forms :value="formData" ref="form">
+		<uni-forms :modelValue="formData" ref="form">
 			<uni-forms-item label="姓名" name="name">
 				<uni-easyinput type="text" v-model="formData.name" placeholder="请输入姓名" />
 			</uni-forms-item>
@@ -76,7 +77,8 @@ export default {
 		return {
 			formData:{
 				name:'',
-				age:''
+				age:'',
+				hobby:[]
 			},
 			hobby: [{
 				text: '足球',
@@ -124,7 +126,7 @@ export default {
 ```html
 <template>
 	<view>
-		<uni-forms ref="form" :value="formData" :rules="rules">
+		<uni-forms ref="form" :modelValue="formData" :rules="rules">
 			<uni-forms-item label="姓名" name="name">
 				<uni-easyinput type="text" v-model="formData.name" placeholder="请输入姓名" />
 			</uni-forms-item>
@@ -351,7 +353,7 @@ export default {
 ```html
 <template>
 	<view>
-		<uni-forms :value="formData" ref="form">
+		<uni-forms :modelValue="formData" ref="form">
 			<uni-forms-item name="age" label="年龄">
 				<uni-easyinput v-model="formData.age" type="text" placeholder="请输入年龄" />
 			</uni-forms-item>
@@ -426,7 +428,7 @@ export default {
 
 <template>
 	<view>
-		<uni-forms  ref="form" :value="formData" validate-trigger="bind">
+		<uni-forms  ref="form" :modelValue="formData" validate-trigger="bind">
 			<uni-forms-item name="age" label="年龄">
 				<!-- uni-easyinput 的校验时机是数据发生变化， 即触发 input 时 -->
 				<uni-easyinput v-model="formData.age" type="text" placeholder="请输入年龄" />
@@ -461,7 +463,8 @@ export default {
 
 | 属性名						| 类型				|默认值	 		| 可选值							| 说明|
 | :-:							| :-:				|:-:				| :-:								| :-:		|
-| v-model/value		| Object		| -					| -									| 表单数据|
+| v-model/value [即将废弃]	| Object		| -					| -									| 表单数据|
+| v-model/modelValue| Object		| -					| -									| 表单数据|
 | rules						| Object		| -					| -									| 表单校验规则	|
 | validate-trigger| String		| submit		| bind/submit				| 表单校验时机|
 | label-position	| String		| left 			| top/left					| label 位置
@@ -480,11 +483,12 @@ validate		| 任意表单项被校验后触发，返回表单校验信息
 
 | 方法称名				| 说明		|						
 | :-:						| :-:		|						
-| submit 				| 对整个表单进行校验的方法，会返回一个 promise	|
+| submit[即将废弃]| 对整个表单进行校验的方法，会返回一个 promise	|
+| validate 			| 对整个表单进行校验的方法，会返回一个 promise	|
 | setValue			| 设置表单某一项 name 的对应值，通常在 uni-forms-item 和自定表单组件中使用|
 | validateField	| 部分表单进行校验		|
 | clearValidate	| 移除表单的校验结果	|
-| resetFields   | 重置表单|
+| resetFields   | 重置表单, 需要把 `uni-forms` 的`modelValue`属性改为 `v-model` ,且对内置组件可能不生效|
 
 
 ```javascript

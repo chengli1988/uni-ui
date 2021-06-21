@@ -7,7 +7,13 @@
 		</div>
 
 		<!-- repo link -->
-		<a v-if="repoLink" :href="repoLink" class="repo-link" target="_blank" rel="noopener noreferrer">
+		<a
+			v-if="repoLink"
+			:href="repoLink"
+			class="repo-link"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
 			<!-- {{ repoLabel }} -->
 			<img class="repo-link-image" src="/github.svg" alt />
 			<!-- <OutboundLink /> -->
@@ -16,12 +22,12 @@
 </template>
 
 <script>
-import DropdownLink from '@theme/components/DropdownLink.vue';
-import { resolveNavLinkItem } from '../util';
-import NavLink from '@theme/components/NavLink.vue';
+import DropdownLink from "@theme/components/DropdownLink.vue";
+import { resolveNavLinkItem } from "../util";
+import NavLink from "@theme/components/NavLink.vue";
 
 export default {
-	name: 'NavLinks',
+	name: "NavLinks",
 
 	components: {
 		NavLink,
@@ -40,11 +46,12 @@ export default {
 				const routes = this.$router.options.routes;
 				const themeLocales = this.$site.themeConfig.locales || {};
 				const languageDropdown = {
-					text: this.$themeLocaleConfig.selectText || 'Languages',
-					ariaLabel: this.$themeLocaleConfig.ariaLabel || 'Select language',
+					text: this.$themeLocaleConfig.selectText || "Languages",
+					ariaLabel: this.$themeLocaleConfig.ariaLabel || "Select language",
 					items: Object.keys(locales).map(path => {
 						const locale = locales[path];
-						const text = (themeLocales[path] && themeLocales[path].label) || locale.lang;
+						const text =
+							(themeLocales[path] && themeLocales[path].label) || locale.lang;
 						let link;
 						// Stay on the current page
 						if (locale.lang === this.$lang) {
@@ -88,15 +95,15 @@ export default {
 			}
 
 			const repoHost = this.repoLink.match(/^https?:\/\/[^/]+/)[0];
-			const platforms = ['GitHub', 'GitLab', 'Bitbucket'];
+			const platforms = ["GitHub", "GitLab", "Bitbucket"];
 			for (let i = 0; i < platforms.length; i++) {
 				const platform = platforms[i];
-				if (new RegExp(platform, 'i').test(repoHost)) {
+				if (new RegExp(platform, "i").test(repoHost)) {
 					return platform;
 				}
 			}
 
-			return 'Source';
+			return "Source";
 		}
 	}
 };
